@@ -1,3 +1,7 @@
+# build/run dirs
+_build
+_run
+
 # Prerequisites
 *.d
 
