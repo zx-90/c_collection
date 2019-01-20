@@ -6,3 +6,4 @@
 
 * [Unit tests](test/index.md)
 
+* [Simple dynamic array](array/index.md)

@@ -5,6 +5,11 @@
  * SPDX-License-Identifier: BSD-3-Clause
 */
 
-#define TEST_MAIN
 #include "test/test_main.h"
+
+int
+main(void)
+{
+    return zx_test_all();
+}
 

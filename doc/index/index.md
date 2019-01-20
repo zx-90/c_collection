@@ -19,12 +19,12 @@ Makefile is need to create test projects. If you want to create or update test p
 
 * `_run` directory consists of bin files of every example in test directory.
 
-# Feature~~s~~ of library projects.
+# Features of library projects.
 
-In any projects of collection all definitions of macros, structure, function etc. start with the same set of chars. For example in test-project all macros starts with `TEST` and all functions and structures with `test`. So, if such beginning of word already using in your project you can change beginnig of definition in this library to avoid ambiguotios. Example for Linux:
+In any projects of collection all definitions of macros, structure, function etc. start with `ZX_` or `zx_` and then the same set of chars. For example in test-project all macros starts with `ZX_TEST` and all functions and structures with `zx_test`. So, if such beginning of units already using in your project you can change zx-beginnig of definition in this library to avoid ambiguotios. Example for Linux:
 
-    find . -name '*.c' -o -name '*.h' -type f -print0 | xargs -0 sed -i 's/\<TEST/MY_TEST/g'
-    find . -name '*.c' -o -name '*.h' -type f -print0 | xargs -0 sed -i 's/\<test/my_test/g'
+    cd <LIBRARY_PATH>
+    find . -name '*.c' -o -name '*.h' -type f -print0 | xargs -0 sed -i 's/\<ZX_/MY_BEGINNING/g'
+    find . -name '*.c' -o -name '*.h' -type f -print0 | xargs -0 sed -i 's/\<zx_/my_beginning/g'
 
-I do believe that similar tools are present in Windows and Mac OS but I cannot to exam it.
-
+Where `<LIBRARY_PATH>` is path to library.

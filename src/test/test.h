@@ -5,28 +5,24 @@
  * SPDX-License-Identifier: BSD-3-Clause
 */
 
-// Capital prefix: TEST
-// Small prefix: test
+#ifndef ZX_TEST_H
+#define ZX_TEST_H
 
-#ifndef TEST_H
-#define TEST_H
+#include "../base/base.h"
 
 void *
-test_register(void (f)(_Bool *test_result), char *desc);
+zx_test_register(void (f)(_Bool *test_result), char *desc);
 
-#define TEST_STRING_CONCAT_INNER(x, y) x ## y
-#define TEST_STRING_CONCAT(x, y) TEST_STRING_CONCAT_INNER(x, y)
-
-#define TEST(desc)\
-static void TEST_STRING_CONCAT(test_,__LINE__)(_Bool *test_result); \
-static void __attribute__((constructor)) TEST_STRING_CONCAT(test_constructor_,__LINE__)(void) \
+#define ZX_TEST(desc) \
+static void ZX_CONCAT(zx_test_,__LINE__)(_Bool *test_result); \
+static void __attribute__((constructor)) ZX_CONCAT(zx_test_constructor_,__LINE__)(void) \
 { \
-test_register(TEST_STRING_CONCAT(&test_,__LINE__), #desc); \
+zx_test_register(ZX_CONCAT(&zx_test_,__LINE__), #desc); \
 } \
-static void TEST_STRING_CONCAT(test_,__LINE__)(_Bool *test_result)
+static void ZX_CONCAT(zx_test_,__LINE__)(_Bool *test_result)
 
-#define TEST_FAIL ; *test_result = 0; return;
-#define TEST_SUCCESS ; *test_result = 1; return;
-#define TEST_ASSERT(x) ; *test_result = (x);
+#define ZX_TEST_FAIL ; *test_result = 0; return;
+#define ZX_TEST_SUCCESS ; *test_result = 1; return;
+#define ZX_TEST_ASSERT(x) ; *test_result = (x);
 
-#endif // TEST_H
+#endif // ZX_TEST_H

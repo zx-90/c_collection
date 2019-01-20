@@ -2,6 +2,9 @@
 _build
 _run
 
+# Dir for drafts, notes, temporary files etc.
+notes
+
 # Prerequisites
 *.d
 
